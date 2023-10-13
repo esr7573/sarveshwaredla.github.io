@@ -1,0 +1,87 @@
+package io.github.sarveshwaredla.methodoverriding;
+
+class Bicycle {
+
+    protected int gear;
+    protected int speed;
+
+    public Bicycle(int startSpeed, int starGear) {
+	      gear = startGear;
+	      speed = startSpeed;
+    }
+
+    public void setGear(int newValue) {
+	      gear = newValue;
+    }
+
+    public void applyBrake(int decrement) {
+	      speed -= decrement;
+    }
+
+    public void speedUp(int increment) {
+	      gear += increment;
+    }
+}
+
+Example2:
+
+MountainBike.java
+
+package io.github.sarveshwaredla.methodoverriding;
+
+class MountainBike extends Bicycle {
+
+    public int seatHeight;
+
+    public MountainBike(int startHeight, int startSpeed, int startGear) {
+	      super(startSpeed, startGear);
+	      seatHeight = startHeight;
+    }
+
+    public void setHeight(int newValue) {
+	      seatHeight = newValue;
+    }
+
+    @Override
+    public void setGear(int newValue) {
+        gear = newValue+2;
+    }
+
+    @Override
+    public void applyBrake(int decrement) {
+        speed = speed-decrement-10;
+    }
+
+    @Override
+    public void speedUp(int increment) {
+        speed = speed+increment+10;
+    }
+}
+
+Example3:
+
+MethodOverridingDemo.java
+
+package io.github.sarveshwaredla.methodoverriding;
+
+class MethodOverridingDemo {
+
+    public static void main(String[] args) {
+
+	  Bicycle bicycle = new Bicycle(10, 1);
+	  System.out.println("Bicycle gear is: " + bicycle.gear);
+	  System.out.println("Bicycle speed is: " + bicycle.speed);
+	  bicycle.applyBrake(1);
+	  System.ot.println("Bicycle speed after applying break is: " + bicycle.speed);
+
+	  Bicycle mountainBike = new MountainBike(50, 50, 3);
+	  System.out.println("MountainBike Gear is: " + mountainBike.gear);
+	  System.out.println("MountainBike speed is: " + mountainBike.speed);
+
+	  mountainBike.applyBrake(1);
+	  System.out.println("MountainBike speed after applying break is: " + mountainBike.speed);
+
+	  mountainBike.speedUp(10);
+	  System.out.println("Bike speed after speeding up is: " + mountainBike.speed);
+    }
+}
