@@ -1,0 +1,97 @@
+package io.github.sarveshwaredla.methodcalling;
+
+class Student {
+
+    static {
+	      System.out.println("initializer code");
+	      String college = "SVV";
+    	  int count = 0;
+    }
+
+    String name;
+    int age;
+    String address;
+    
+
+    public Student(String name, int age, String address) {
+	      this.name = name;
+	      this.age = age;
+	      this.address = address;
+    }
+    
+    public void setName(String name) {
+  	    this.name = name;
+    }
+
+    public void setAge(int age) {
+	      this.age = age;
+    }
+
+    public void setAddress(String address) {
+	      this.address = address;
+    }
+
+    public String getName() {
+	      return name;
+    }
+
+    public int getAge() {
+	      return age;
+    }
+
+    public String getAddress() {
+	      return address;
+    }
+
+
+    @Override
+    public String toString() {
+	      return ("Student name is " + this.getName() + ", age is: " + this.getAge() +" and address is: "+ this.getAddress());
+    }
+
+    static void studentCount() {
+    	  count = count + 1;
+    }
+
+    int getCount() {
+	      return count;
+    }
+}
+
+Example2:
+
+MethodCallingDemo.java
+
+package io.github.sarveshwaredla.methodcalling;
+
+class MethodCallingDemo {
+
+    public static void main(String[] args) {
+	      int i = 1;
+	      int result = changeValue(i);
+	      System.out.println("i is: "+result);
+
+	      Student john = new Student("John", 25, "23 East, California");
+	      changeNameInSameObject(john);
+	      Student resultObj = changeNameInDiffObject(John);
+
+	      System.out.println(john.getName());
+	      System.out.println(john.getAge());
+	      System.out.println(john.getAddress());
+    }
+
+    private static int changeValue(int i) {
+	      i = i +1;
+	      return i;
+    }
+
+    static void changeNameInSameObject(Student student) {
+	      student.setName("Jane");
+    }
+
+    static void changeNameInDiffObject(Student student) {
+	      Student newStudent = new Student("Jane",student.getAge(), student.getAddress());
+
+     	  return newStudent;
+    }
+}
