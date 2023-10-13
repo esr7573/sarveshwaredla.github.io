@@ -1,0 +1,29 @@
+package io.github.sarveshwaredla.datatypes;
+
+public class PrimitiveDataTypes {
+
+    public static void main(String[] args) {
+	
+	char a = 'A';
+
+	byte b = 2;
+	
+	short c = 22;
+
+	int d = 45;
+
+	float e = 5.123451f;
+
+	double f = 4.68295233535d;
+
+	boolean g = true;
+
+	Sytem.out.println("char: " + a);
+	Sytem.out.println("byte: " + b);
+	Sytem.out.println("short: " + c);
+	Sytem.out.println("int: " + d);
+	Sytem.out.println("float: " + e);
+	Sytem.out.println("double: " + f);
+	Sytem.out.println("boolean: " + g);
+    }
+}
