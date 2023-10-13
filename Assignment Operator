@@ -1,0 +1,20 @@
+package io.github.sarveshwaredla.operators;
+
+public class AssignmentOperator {
+
+    public static void main(String[] args){
+
+        int a=10;
+        //add assign
+        System.out.println(a+=2);
+        System.out.println(a);
+        //sub assign
+        System.out.println(a-=2);
+        //mul assign
+        System.out.println(a*=2);
+        //div assign
+        System.out.println(a/=2);
+        //mod div assign
+        System.out.println(a%=3);
+    }
+}
