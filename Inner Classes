@@ -1,0 +1,106 @@
+package io.github.sarveshwaredla.innerclasses;
+
+public class OuterClass {
+
+    class InnerClass {
+	  public void display() {
+	      System.out.println("This is a inner class method");
+        }
+    }
+
+    void outerClassMethod() {
+
+	    System.out.println("in the outer Class Method");
+
+	    class MethodLocalClass {
+	        void localInnerMethod() {
+		          System.out.println("in the method local class: Method");
+          }
+      }
+         
+          MethodLocalClass mlc = new MethodLocalClass();
+          mlc.localInnerMethod();
+    }
+}
+
+Example2:
+
+InnerClassDemo.java
+
+package io.github.sarveshwaredla.innerclasses;
+
+class InnerClassDemo {
+    public static void main(String[] args) {
+	      OuterClass.InnerClass in = new OuterClass().new InnerClass();
+	      in.display();
+
+	      OuterClass outerClass = new OuterClass();
+	      outerClass.outerClassMethod();
+    }
+}
+
+Example3:
+
+Bicycle.java
+
+package io.gihub.sarveshwaredla.innerclasses;
+
+interface Bicycle {
+
+    void canSpeedUp();
+
+    void canApplyBreak();
+}
+
+Example4:
+
+MountainBike.java
+
+package io.gihub.sarveshwaredla.innerclasses;
+
+class MountainBike implements Bicycle {
+
+    @Override
+    public void canSpeedUp() {
+	      System.out.println("can speed up mountain bike");
+    }
+
+    @Override
+    public void canApplyBreak() {
+	      System.out.println("can apply break");
+    }
+}
+
+Example5:
+
+AnonymousInnerClassDemo.java
+
+package io.github.sarveshwaredla.innerclasses;
+
+public class AnonymousInnerClassDemo {
+	  public static void main(String[] args) {
+	      Bicycle mountainBike = new MountainBike();
+	      mountainBike.canApplyBreak();
+	      mountainBike.canSpeedUP();
+
+	      Bicycle bicycle = new Bicycle() {
+		    @Override
+		    public void canSpeedUp() {
+		        System.out.println("can speed up mountain bike");
+		    }
+
+		    @Override
+		    public void canApplyBreak() {
+		        System.out.println("can apply break");
+		    }
+
+        bicycle.canApplyBreak();
+        bicycle.canSppedUp();
+	      }
+    }
+}
+
+            bicycle.canApplyBreak();
+	    bicycle.canSpeedUp();
+        }
+}
