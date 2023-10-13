@@ -1,0 +1,63 @@
+package io.github.sarveshwaredla.abstraction;
+
+public abstract class GraphicObject {
+    int x, y;
+
+    GraphicObject() {
+	System.out.println("base abstract class");
+    }
+
+    void moveTo(int newX, int newY) {
+	System.out.println("move to x :" +x+" and y:"+y);
+    }
+
+    abstract void draw();
+    abstract void resize();
+}
+  
+Example2:
+
+package io.github.sarveshwaredla.abstraction;
+
+public class Circle extends GraphicObject {
+    void draw() {
+	System.out.println("Drawing a circle");
+    }
+
+    void resize();
+    	System.out.println("Resizing a circle");
+    }
+}  
+
+Example3:
+
+package io.github.sarveshwaredla.abstraction;
+
+public class Rectangle extends GraphicObject {
+    void draw() {
+	System.out.println("Drawing a Rectangle");
+    }
+
+    void resize();
+    	System.out.println("Resizing a Rectangle");
+    }
+}
+
+Example4:
+
+AbstractionDemo.java
+
+package io.github.sarveshwaredla.abstraction;
+
+public class AbstractionDemo {
+
+    public static void main(String[] args) {
+    	GraphicObject circle = new Circle(); 
+	circle.draw();
+	circle.resize();
+
+	GraphicObject rectangle = new Rectangle();
+	rectangle.draw();
+	rectangle.resize();
+    }
+}
