@@ -1,0 +1,52 @@
+package io.github.sarveshwaredla.exceptions;
+
+public class SimpleExceptionDemo {
+
+    public static void main(String[] args) {
+	  int data = 100/0; //divide by 0
+	      System.out.println(data);
+
+	  String a = null; //null value
+	      System.out.println(a.charAt(0));
+    }
+}
+
+Example2:
+
+MyExceptionDemo.java
+
+package io.github.sarveshwaredla.exceptions;
+
+class MyException extends Exception {
+    
+    // default constructor
+    MyException() { }
+
+    // parameterized constructor
+    MyException(String str) { super(str); }
+}
+
+Example3:
+
+CheckedExceptionDemo.java
+
+package io.github.sarveshwaredla.exceptions;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class CheckedExceptionDemo {
+
+	  public static void main(String[] args) throws MyException {
+	      FileReader file = new FileReader("c:\\test\\a.txt");
+	      BufferedReader fileInput = new BufferedReader(file);
+
+	      // Print first 3 lines of file "C:\test\a.txt"
+	      for (int counter = 0; counter < 3; counter++)
+		        System.out.println(fileInput.readLine());
+
+	          fileInput.close();
+	          throw new MyException()
+ 	  }
+
+}
