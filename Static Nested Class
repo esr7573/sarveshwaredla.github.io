@@ -1,0 +1,37 @@
+package io.github.sarveshwaredla.staticnestedclasses;
+
+class OuterClass {
+
+    static int outerStaticMember = 10;
+
+    int instanceMember = 20;
+
+    private static int outerPrivateMember = 30;
+
+
+    static class StaticNestedClass {
+	      void display() {
+	        System.out.println("static member of outer class = " + outerStaticMember);
+
+	        System.out.println("private static member of outer class = " + outerPrivateMember);
+
+ 	        System.out.println("non static member of outer class = " + instanceMember);   
+        }
+    }
+}
+
+Example2:
+
+StaticNestedClassesDemo.java
+
+package io.github.sarveshwaredla.staticnestedclasses;
+
+class StaticNestedClassesDemo {
+
+    public static void main(String[] args) {
+	      accessing a static nested class
+	      OuterClass.StaticNestedClass nestedObject = new OuterClass.StaticNestedClass();
+
+	      nestedObject.display();
+    }
+}
