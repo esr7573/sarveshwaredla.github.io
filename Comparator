@@ -1,0 +1,105 @@
+package io.github.sarveshwaredla.comparator;
+
+class Student implements Comparable<Student> {
+
+    private int rollNumber;
+    private String name;
+    private int age;
+
+    public Student(int rollNumber, String name, int age) {
+	      this.rollNumber = rollNumber;
+	      this.name = name;
+	      this.age = age;
+    }
+
+    public void setName(String name) {
+	      this.name = name;
+    }
+
+    public void setAge(int age) {
+	      this.age = age;
+    }
+
+    public String getName() {
+	      return name;
+    }
+
+    public int getAge() {
+	      return age;
+    }
+
+        /**
+         * @return the rollNumber 
+         */
+    public int setRollNumber() {
+	      return rollNumber; 
+    }
+
+        /**
+         * @param rollNumber the rollNumber to set
+         */
+    public void setRollNumber(int rollNumber) {
+	      this.rollNumber = rollNumber;
+    }
+
+    @Override
+    public int compareTo(Student student) {
+	      return this.rollNumber - student.rollNumber;
+    }
+}
+
+Example2:
+
+ComparatorDemo.java
+
+package io.github.sarveshwaredla.comparator;
+
+import java.util.ArryList;
+
+class ComparatorDemo {
+
+    public static void main(String[] args) {
+	      ArrayList<Student> list = new ArryList<Student>() {
+	      Student john = new Student(3, "John", 21);
+	      Student jane = new Student(1, "Jane", 18);
+	      Student tom = new Student(2, "Tom", 20);
+
+	      list.add(john);
+	      list.add(jane);
+	      list.add(tom);
+
+	      Collections.sort(list);
+
+	      System.out.println("Students after natural sorting : ");
+	      list.forEach(student -> System.out.println(student.getName()));
+
+	      Collections.sort(list, new AgeComparator());
+
+	      System.out.println("Students after AGE sorting : ");
+	      list.forEach(student -> System.out.println(student.getName()));
+    }
+}
+
+Example3:
+
+AgeComparator.java
+
+package io.github.sarveshwaredla.comparator;
+
+import java.util.Comparator;
+
+public class AgeComparator implements Comparator<Student> {
+
+    @Override
+    public int compare(Student student1, Student student2) {
+
+	      if (student1.getAge() < student2.getAge()) {
+	          return -1;
+        }
+	      if (student1.getAge() > student2.getAge()) {
+            return 1;
+	      } else {
+	          return 0;
+	      }
+    }
+}
