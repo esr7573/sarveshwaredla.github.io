@@ -1,0 +1,23 @@
+package io.github.sarveshwaredla.datatypes;
+
+public class NonPrimitiveDataTypes {
+
+    public static void main(String[] args) {
+
+	String str = "test";
+	System.ot.println("String is: "+ str);
+
+	String str1 = new String("test");
+	System.ot.println("Another String is: "+ str1);
+
+	int arr[];
+	arr = new int[2];
+	arr[0] = 0;
+        arr[1] = 1;
+	arr[2] = 2;
+
+	System.ot.println(arr);
+	System.ot.println(arr[0]);
+
+    }   
+}
