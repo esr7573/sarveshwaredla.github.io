@@ -1,0 +1,160 @@
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+public class MainApp {
+    public static void main(String[] args) {
+	  final String inputExp = ReadInput.read();
+
+	  Queue<String> operations;
+	  Queue<String> numbers;
+
+	  String numberArr[] = inputExp.split("[-+*/]");
+	  String operArr[] = inputExp.split("[0-9]+");
+
+	  numbers = new LinkedList<String>(Arrays.asList(numbersArr));
+	  operations = new LinkedList<String>(Arrays.asList(operArr));
+
+	  Double res = Double.parseDouble(numbers.poll());
+
+	  while (!numbers.isEmpty()) {
+	      String opr = operations.poll();
+
+	      Operate operate;
+	      switch (opr) {
+	      case "+":
+		        operate = new Add();
+		        break;
+	      case "-":
+		        operate = new Subtract();
+		        break;
+	      case "*":
+		        operate = new Multiply();
+		        break;
+	      case "/":
+		        operate = new Divide();
+		        break;
+	      default:
+		        continue;
+	      }
+
+	      Double num = Double.parseDouble(numbers.poll());
+
+	      res = operate.getResult(res, num);
+        }
+
+	      System.out.println(res);
+    }
+}
+
+Example2:
+
+ReadInput.java
+
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+import java.util.Scanner;
+
+public class ReadInput {
+
+    public static String read() {
+
+	      Scanner scanner = new Scanner(System.in);
+
+	      System.out.println("Input expression (for eg: 4*3/2");
+
+	      String inputLine = scanner.nextLine();
+
+	      scanner.close();
+	      return inputLine;
+    }
+}
+
+Example3:
+
+Add.java
+
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+public class Add implements Operate {
+
+    @Override
+    public Double getResult(Double... numbers) {
+	      Double sum = 0.0;
+
+	      for (Double num : numbers) {
+	          sum += num;
+	      }
+
+	      return sum;
+    }
+}
+
+Example4:
+
+Operate.java
+
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+public interface Operate {
+   
+    Double getResult(Double... numbers);
+}
+
+Example5:
+
+Subtract.java
+
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+public class Subtract implements Operate {
+
+    @Override
+    public Double getResult(Double... numbers) {
+	      Double result = numbers[0];
+
+	      for (int i = 1; i < numbers.length; i++) {
+	          result -= numbers[i];
+	      }
+
+	      return result;
+    }
+}
+
+Example6:
+
+Multiply.java
+
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+public class Multiply implements Operate {
+
+    @Override
+    public Double getResult(Double... numbers) {
+	      Double result = 1.0;
+
+	      for (Double num : numbers) {
+	          result *= num;
+	      }
+
+	      return result;
+    }
+}
+
+Example7:
+
+Divide.java
+
+package io.github.sarveshwaredla.corejava.project.calculator;
+
+public class Divide implements Operate {
+
+    @Override
+    public Double getResult(Double... numbers) {
+	      Double result = numbers[0];
+
+	      for (int i = 1; i < numbers.length; i++) {
+	          result /= numbers[i];
+	      }
+
+	      return result;
+    }
+}
